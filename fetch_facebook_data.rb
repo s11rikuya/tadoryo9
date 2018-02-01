@@ -19,7 +19,11 @@ module GetFBData
       next unless from_time <= Time.parse(index['created_time']) && Time.parse(index['created_time']) <= to_time
       container = {}
       container['time'] = index['created_time']
-      container['name'] = index['place']['name']
+      if index['place']['name'] == ""
+        container['name'] = "NO NAME"
+      else
+        container['name'] = index['place']['name']
+      end
       container['lat'] = index['place']['location']['latitude']
       container['lng'] = index['place']['location']['longitude']
       range_indexs.push(container)

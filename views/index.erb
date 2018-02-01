@@ -5,11 +5,7 @@
     <p>チェックイン数: <%= @range_indexs.size %></p>
     <ol type="A">
       <% @range_indexs.each do |point| %>
-      <% if point["name"] != "" %>
       <li><%= point["name"] %><br><small><%= point["time"] %></small></li>
-      <% else %>
-      <li>NO NAME<br><small><%= point["time"] %></small></li>
-      <% end %>
       <% end %>
     </ol>
   </div>
