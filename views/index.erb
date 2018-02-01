@@ -12,7 +12,6 @@
       <% end %>
       <% end %>
     </ol>
-    <!-- <p><%= @range_indexs.to_json %></p> -->
   </div>
   <div class="frame">
     <div id="map"></div>
@@ -20,22 +19,12 @@
 </div>
 
 <script>
-
 function initMap() {
-
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 3,
     center: {lat: -28.024, lng: 140.887}
   });
-
-  // Create an array of alphabetical characters used to label the markers.
   var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-  // Add some markers to the map.
-  // Note: The code uses the JavaScript Array.prototype.map() method to
-  // create an array of markers based on a given "locations" array.
-  // The map() method here has nothing to do with the Google Maps API.
-
   var markers = locations.map(function(location, i) {
     return new google.maps.Marker({
       position: location,
@@ -50,27 +39,13 @@ function initMap() {
     strokeOpacity: 1.0,
     strokeWeight: 2
   });
-
   flightPath.setMap(map);
-
-  // 距離算出
-  // var glatlng = new google.maps.LatLng(locations)
-  // var distance = google.maps.geometry.spherical.computeLength(glatlng);
-  // new google.maps.InfoWindow({
-  //   content: glatlng,
-  //   position: {lat: -28.024, lng: 140.887}
-  // }).open(map);
-  // console.log(glatlng);
-
-
-  // Add a marker clusterer to manage the markers.
   var markerCluster = new MarkerClusterer(map, markers,
     {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
   }
   var locations = <%= @range_indexs.to_json %>
   </script>
-  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
-  </script>
+
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
   <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-XvwqNLvHjLQKRHDVNuAHPodtf8WUwz4&libraries=geometry&callback=initMap">
-  </script>
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-XvwqNLvHjLQKRHDVNuAHPodtf8WUwz4&libraries=geometry&callback=initMap"></script>
