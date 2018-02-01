@@ -1,7 +1,7 @@
 module GetFBData
   require 'koala'
   require 'pp'
-  def getData()
+  def gets_data
     graph = Koala::Facebook::API.new(@accsess_torken)
     graph_result = graph.get_connection('me', 'posts', { fields: %w(place created_time) } )
     results = graph_result.to_a
@@ -10,14 +10,12 @@ module GetFBData
       graph_result = next_results
     end
     graph = Koala::Facebook::API.new(@accsess_torken, @app_secret)
-    data_indexs = results
+    return results
   end
 
   def filter(data_indexs)
-    data_indexs.reject do |di|
-      di['place'].nil?
-    end.select do |di|
-      Time.parse(di['created_time']).between?(@from_time, @to_time)
+    data_indexs.select do |di|
+      !di['place'].nil? && Time.parse(di['created_time']).between?(@from_time, @to_time)
     end.map do |di|
       di['place']['name'] = 'NO NAME' if di['place']['name'] == ''
       {
