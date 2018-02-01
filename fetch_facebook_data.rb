@@ -1,13 +1,14 @@
 module GetFBData
+  require 'koala'
   def getData()
-    @graph = Koala::Facebook::API.new(@acsess_torken)
+    @graph = Koala::Facebook::API.new(@accsess_torken)
     @graph_result = @graph.get_connection('me', 'posts', { fields: %w(place created_time) } )
     @results = @graph_result.to_a
     until (next_results = @graph_result.next_page).nil?
       @results += next_results.to_a
       @graph_result = next_results
     end
-    @graph = Koala::Facebook::API.new(@acsess_torken, @app_secret)
+    @graph = Koala::Facebook::API.new(@accsess_torken, @app_secret)
     data_indexs = @results
     return data_indexs
   end
