@@ -25,7 +25,7 @@ get '/index' do
     include GetFBData
   end
   my_history = History.new(ACCSESS_TORKEN, APP_SCRET, FROM_TIME, TO_TIME)
-  data_indexs = my_history.getData
+  data_indexs = my_history.gets_data
   @from_time = my_history.from_time
   @to_time = my_history.to_time
   @range_indexs = my_history.filter(data_indexs)
