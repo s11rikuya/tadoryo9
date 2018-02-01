@@ -4,11 +4,14 @@ require 'net/http'
 require 'json'
 require 'koala'
 require 'time'
+require 'dotenv'
+Dotenv.load
+
 get '/index' do
   require_relative 'fetch_facebook_data.rb'
   @title = "MyApp"
-  ACSESS_TORKEN = 'XXXXXXXXXX'.freeze
-  APP_SCRET = 'XXXXXXXXXXXXX'.freeze
+  ACSESS_TORKEN = ENV['ACSESS_TORKEN']
+  APP_SCRET = ENV['APP_SCRET']
   class History
     include GetFBData
   end
