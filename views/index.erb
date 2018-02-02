@@ -1,0 +1,47 @@
+<div class="content">
+  <div class="info">
+    <h1><%= @title %></h1>
+    <p>【<%= @from_time %>】 - 【<%= @to_time %>】</p>
+    <p>チェックイン数: <%= @range_indexs.size %></p>
+    <ol type="A">
+      <% @range_indexs.each do |point| %>
+      <li><%= point[:name] %><br><small><%= point[:time] %></small></li>
+      <% end %>
+    </ol>
+  </div>
+  <div class="frame">
+    <div id="map"></div>
+  </div>
+</div>
+
+<script>
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: {lat: 28, lng: 120}
+  });
+  var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var markers = locations.map(function(location, i) {
+    return new google.maps.Marker({
+      position: location,
+      label: labels[i % labels.length]
+    });
+  });
+  // ルート線を作成
+  var flightPath = new google.maps.Polyline({
+    path: locations,
+    geodesic: true,
+    strokeColor: '#FF0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+  });
+  flightPath.setMap(map);
+  var markerCluster = new MarkerClusterer(map, markers,
+    {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+  }
+  var locations = <%= @range_indexs.to_json %>
+  </script>
+
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-XvwqNLvHjLQKRHDVNuAHPodtf8WUwz4&libraries=geometry&callback=initMap"></script>
