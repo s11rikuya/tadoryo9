@@ -11,6 +11,7 @@ module GetFBData
     end
     return results
   end
+
   def filter(data_indexs)
     data_indexs.select do |di|
       !di['place'].nil? && Time.parse(di['created_time']).between?(@from_time, @to_time)

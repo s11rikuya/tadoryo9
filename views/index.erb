@@ -2,6 +2,11 @@
   <div class="info">
     <h1><%= @title %></h1>
     <p>【<%= @from_time %>】 - 【<%= @to_time %>】</p>
+      <form action="/index" method="get">
+        <input type="text" name="from_time" placeholder="XXXX/XX/XX">
+        <input type="text" name="to_time" placeholder="XXXX/XX/XX">
+        <input type="submit" value="save">
+      </form>
     <p>チェックイン数: <%= @range_indexs.size %></p>
     <ol type="A">
       <% @range_indexs.each do |point| %>

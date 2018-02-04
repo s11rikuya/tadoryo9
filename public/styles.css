@@ -12,13 +12,59 @@ html, body {
   padding: 0;
 }
 
+form {
+  margin: 10px;
+}
+
+input, button, textarea, select {
+  margin: 0px;
+  padding: 5px;
+  background: none;
+  border: solid black;
+  border-radius: 0;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.top {
+  text-align: center;
+}
+
+.top h1 {
+  font-size: 50px;
+}
+
+.top img {
+  display: block;
+  margin: 50px auto;
+  width: 30%;
+}
+
+.login {
+  display: block;
+  width: 250px;
+  margin: auto;
+  border: solid black 10px;
+  text-decoration: none;
+  color: black;
+  font-size: 50px;
+  font-weight: bold;
+}
+
 .content {
   display: flex;
+  height: 100%;
 }
 .info {
   width: 50%;
+  overflow: scroll;
 }
+
 .frame {
   width: 50%;
-  max-height: 700px;
+  height: 100%;
 }

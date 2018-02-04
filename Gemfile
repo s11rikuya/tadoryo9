@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 gem 'dotenv'
 gem 'koala'
+gem 'omniauth-facebook'
 gem 'sinatra'
 gem 'sinatra-contrib'
