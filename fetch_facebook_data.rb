@@ -9,7 +9,7 @@ module GetFBData
       results += next_results.to_a
       graph_result = next_results
     end
-    pp results
+    result = filter(results)
     return results
   end
 
