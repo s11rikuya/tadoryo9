@@ -21,7 +21,9 @@ class SinatraOmniAuth < Sinatra::Base
   end
 
   use OmniAuth::Builder do
-    provider :facebook, APP_ID, APP_SECRET
+    provider :facebook, APP_ID, APP_SECRET,
+    scope: "email, user_birthday, public_profile, user_posts", display: "popup",
+    info_fields: "email, birthday, gender, first_name, last_name, posts"
   end
 
   get '/' do
