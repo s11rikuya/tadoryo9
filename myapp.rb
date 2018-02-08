@@ -40,10 +40,10 @@ class SinatraOmniAuth < Sinatra::Base
   get '/index' do
     require_relative 'history.rb'
     @title = 'Tadoryo9'
-    @from_time = params[:from_time].nil? ? '2017/01/01' : params[:from_time]
-    @to_time = params[:to_time].nil? ? '2018/01/01' : params[:to_time]
+    @since_time = params[:since_time].nil? ? '2017/01/01' : params[:since_time]
+    @until_time = params[:until_time].nil? ? '2018/01/01' : params[:until_time]
     my_history = History.new(ACCESS_TOKEN, APP_SECRET)
-    @range_indexs = my_history.filter_by_date(@from_time, @to_time)
+    @range_indexs = my_history.filter_by_date(@since_time, @until_time)
     erb :index
   end
 end
