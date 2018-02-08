@@ -9,11 +9,12 @@ module GetFBData
       results += next_results.to_a
       graph_result = next_results
     end
-    result = filter(results)
     return results
   end
 
-  def filter(data_indexs)
+  def filter_by_date(data_indexs, from_time, to_time)
+    @from_time = Time.parse(from_time)
+    @to_time = Time.parse(to_time)
     data_indexs.select do |di|
       !di['place'].nil? && Time.parse(di['created_time']).between?(@from_time, @to_time)
     end.map do |di|
