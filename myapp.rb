@@ -7,13 +7,13 @@ require 'time'
 require 'dotenv'
 require 'pp'
 
-
 Dotenv.load
 
 APP_SECRET = ENV['APP_SECRET']
 APP_ID = ENV['APP_ID']
 
 class SinatraOmniAuth < Sinatra::Base
+
   configure do
     set :sessions, true
     set :inline_templates, true
@@ -43,7 +43,10 @@ class SinatraOmniAuth < Sinatra::Base
     @since_time = params[:since_time].nil? ? '2017/01/01' : params[:since_time]
     @until_time = params[:until_time].nil? ? '2018/01/01' : params[:until_time]
     my_history = History.new(ACCESS_TOKEN, APP_SECRET)
-    @range_indexs = my_history.filter_by_date(@since_time, @until_time)
+    pp @range_indexs = my_history.filter_by_date(@since_time, @until_time)
+    @sum_distance = my_history.culculation(@range_indexs)
+    puts "あなたの今年の総移動距離は#{@sum_distance}kmです。"
+
     erb :index
   end
 end
