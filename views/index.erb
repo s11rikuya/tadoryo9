@@ -36,22 +36,6 @@ function initMap() {
     });
   });
 
-// API利用の距離
-  // var TOKYO = new google.maps.LatLng(35.681382, 139.76608399999998); // 東京駅
-  // var OSAKA = new google.maps.LatLng(34.701909, 135.49497700000006); // 大阪駅
-  // var HAKATA = new google.maps.LatLng(35.871435, 128.601445);
-  // var HANOI =  new google.maps.LatLng(21.027764, 105.83416);
-  // var TAIPEI =  new google.maps.LatLng(25.032964, 121.565427);
-  // var TOKYO = new google.maps.LatLng(35.681382, 139.76608399999998); // 東京駅
-  // var INDEXS = [
-  //   TOKYO, OSAKA, HAKATA, HANOI, TAIPEI, TOKYO
-  // ]
-  // var distance = google.maps.geometry.spherical.computeLength(INDEXS);
-  // new google.maps.InfoWindow({
-  //   content: distance + ' m',
-  //   position: {lat: 28, lng: 120}
-  // }).open(map);
-
   // ルート線を作成
   var flightPath = new google.maps.Polyline({
     path: locations,

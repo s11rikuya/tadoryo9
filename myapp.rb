@@ -45,8 +45,7 @@ class SinatraOmniAuth < Sinatra::Base
     my_history = History.new(ACCESS_TOKEN, APP_SECRET)
     pp @range_indexs = my_history.filter_by_date(@since_time, @until_time)
     @sum_distance = my_history.culculation(@range_indexs)
-    puts "あなたの今年の総移動距離は#{@sum_distance}kmです。"
-
+    
     erb :index
   end
 end
