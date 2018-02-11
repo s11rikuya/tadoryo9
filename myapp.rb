@@ -6,6 +6,8 @@ require 'json'
 require 'time'
 require 'dotenv'
 require 'pp'
+enable :sessions
+
 
 Dotenv.load
 
@@ -33,20 +35,21 @@ class SinatraOmniAuth < Sinatra::Base
   get '/auth/:provider/callback' do
     @provider = params[:provider]
     @result = request.env['omniauth.auth']
-    ACCESS_TOKEN = @result['credentials']['token']
+    session[:access_token] = @result['credentials']['token']
     redirect '/index'
   end
 
   get '/index' do
+    redirect '/' if session[:access_token].nil?
     require_relative 'history.rb'
     @title = 'Tadoryo9'
     @since_time = params[:since_time].nil? ? '2017/01/01' : params[:since_time]
     @until_time = params[:until_time].nil? ? '2018/01/01' : params[:until_time]
-    my_history = History.new(ACCESS_TOKEN, APP_SECRET)
+    my_history = History.new(session[:access_token], APP_SECRET)
     pp @range_indexs = my_history.filter_by_date(@since_time, @until_time)
     @sum_distance = my_history.culculation(@range_indexs)
-    
     erb :index
   end
+
 end
 SinatraOmniAuth.run! if __FILE__ == $0
