@@ -36,6 +36,7 @@ GEM
     rack (2.0.4)
     rack-protection (2.0.1)
       rack
+    rack-timeout (0.4.2)
     sinatra (2.0.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -57,6 +58,7 @@ DEPENDENCIES
   dotenv
   koala
   omniauth-facebook
+  rack-timeout
   sinatra
   sinatra-contrib
 
