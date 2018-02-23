@@ -23,5 +23,4 @@ module GetFBData
       }
     end
   end
-
 end
