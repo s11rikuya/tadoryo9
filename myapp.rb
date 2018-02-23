@@ -26,6 +26,7 @@ class SinatraOmniAuth < Sinatra::Base
 
   get '/' do
     @title = 'Tadoryo9'
+    raise MyCustomError, 'something bad'
     erb :top
   end
 
@@ -50,6 +51,7 @@ class SinatraOmniAuth < Sinatra::Base
 
   error do
     'Sorry there was a nasty error - ' + env['sinatra.error'].message
+    puts 'Sorry there was a nasty error - ' + env['sinatra.error'].message
   end
 
 end
