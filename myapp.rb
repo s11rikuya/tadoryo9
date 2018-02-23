@@ -28,7 +28,7 @@ class SinatraOmniAuth < Sinatra::Base
     @title = 'Tadoryo9'
 
     raise MyCustomError, 'something bad'
-    
+
     erb :top
   end
 
@@ -50,5 +50,9 @@ class SinatraOmniAuth < Sinatra::Base
     @sum_distance = my_history.culculation(@range_indexs)
     erb :index
   end
+
+  error do
+  'Sorry there was a nasty error - ' + env['sinatra.error'].message
+end
 end
 SinatraOmniAuth.run! if __FILE__ == $0
