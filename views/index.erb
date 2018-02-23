@@ -7,7 +7,6 @@
       <input type="text" name="until_time" placeholder="XXXX/XX/XX">
       <input type="submit" value="save">
     </form>
-    <% if @range_indexs %>
     <p>
       チェックイン数: <%= @range_indexs.size %><br>
       移動総距離: <%= @sum_distance %>km
@@ -17,7 +16,6 @@
       <li><%= point[:name] %><br><small><%= point[:time] %></small></li>
       <% end %>
     </ol>
-    <% end %>
   </div>
   <div class="frame">
     <div id="map"></div>
