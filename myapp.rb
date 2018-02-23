@@ -26,7 +26,6 @@ class SinatraOmniAuth < Sinatra::Base
 
   get '/' do
     @title = 'Tadoryo9'
-    raise MyCustomError, 'something bad'
     erb :top
   end
 
