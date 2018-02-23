@@ -26,7 +26,7 @@ module PointCalculation
       distanes.push(c)
     end
 
-    sum_distance = distanes.inject(:+) / 1000
+    pp sum_distance = distanes.inject(:+) / 1000
     return sum_distance
   end
 end
