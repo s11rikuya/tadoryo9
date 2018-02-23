@@ -43,8 +43,8 @@ class SinatraOmniAuth < Sinatra::Base
     @since_time = params[:since_time].nil? ? '2017/01/01' : params[:since_time]
     @until_time = params[:until_time].nil? ? '2017/02/01' : params[:until_time]
     my_history = History.new(session[:access_token])
-    p @range_indexs = my_history.gets_data(@since_time, @until_time)
-    if @range_indexs
+    @range_indexs = my_history.gets_data(@since_time, @until_time)
+    if !@range_indexs.nil?
       @sum_distance = my_history.culculation(@range_indexs)
     end
     erb :index
