@@ -5,6 +5,9 @@ module GetFBData
     graph = Koala::Facebook::API.new(@access_token)
     graph_result = graph.get_connection('me', 'posts', { fields: %w(place created_time) } )
     @results = graph_result.to_a
+
+    sleep(120)
+
     until (next_results = graph_result.next_page).nil?
       @results += next_results.to_a
       graph_result = next_results
