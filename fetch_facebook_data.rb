@@ -16,10 +16,10 @@ module GetFBData
     end.map do |di|
       di['place']['name'] = 'NO NAME' if di['place']['name'] == ''
       {
-        time: di['created_time'],
-        name: di['place']['name'],
-        lat: di['place']['location']['latitude'],
-        lng: di['place']['location']['longitude']
+        'time' => di['created_time'],
+        'name' => di['place']['name'],
+        'lat' => di['place']['location']['latitude'],
+        'lng' => di['place']['location']['longitude']
       }
     end
   end

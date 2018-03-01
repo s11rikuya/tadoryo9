@@ -52,6 +52,7 @@ function initMap() {
     {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
   }
   var locations = <%= @range_indexes.to_json %>
+  console.log(<%= @range_indexes.to_json %>);
   </script>
 
   <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
