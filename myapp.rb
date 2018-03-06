@@ -39,8 +39,6 @@ class SinatraOmniAuth < Sinatra::Base
     redirect '/index'
   end
 
-
-
   get '/index' do
     redirect '/' if session[:access_token].nil?
     require_relative 'history.rb'
@@ -78,7 +76,7 @@ class SinatraOmniAuth < Sinatra::Base
     File.open("sum_distance.txt") do |file|
       @sum_distance = file.read
     end
-    erb :reload
+    erb :index
   end
 
 
