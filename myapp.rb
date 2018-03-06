@@ -29,6 +29,7 @@ class SinatraOmniAuth < Sinatra::Base
 
   get '/' do
     @title = 'Tadoryo9'
+    session[:access_token] = nil
     erb :top
   end
 

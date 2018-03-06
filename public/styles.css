@@ -12,27 +12,9 @@ html, body {
   padding: 0;
 }
 
-form {
-  margin: 10px;
-}
-
-input, button, textarea, select {
-  margin: 0px;
-  padding: 5px;
-  background: none;
-  border: solid black;
-  border-radius: 0;
-  outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-weight: bold;
-  font-size: 10px;
-}
-
 .top {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .top h1 {
@@ -59,7 +41,7 @@ input, button, textarea, select {
 @media (min-width: 768px){
   .top {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 50px;
   }
 
   .top h1 {

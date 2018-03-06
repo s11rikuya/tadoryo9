@@ -3,10 +3,8 @@
     <nav style="overflow: scroll;" class="col-md-2 d-none d-md-block bg-light sidebar pt-3">
       <div class="sidebar-sticky">
         <% if @range_indexes %>
-        <p>
-          Check-in: <%= @range_indexes.size %><br>
-          Total: <%= @sum_distance %>km
-        </p>
+        <h5>Check-in: <%= @range_indexes.size %></h5>
+        <h5>Total: <%= @sum_distance %>km</h5>
         <ol type="A">
           <% @range_indexes.each do |point| %>
           <li><%= point["name"] %><br><small><%= point["time"] %></small></li>
