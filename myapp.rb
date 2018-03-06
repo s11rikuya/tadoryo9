@@ -44,8 +44,8 @@ class SinatraOmniAuth < Sinatra::Base
     redirect '/' if session[:access_token].nil?
     require_relative 'history.rb'
     @title = 'Tadoryo9'
-    session[:since_time] = params[:since_time].nil? ? '2017/01/01' : params[:since_time]
-    session[:until_time] = params[:until_time].nil? ? '2017/02/01' : params[:until_time]
+    session[:since_time] = params[:since_time].nil? || params[:since_time].empty? ? '2017/01/01' : params[:since_time]
+    session[:until_time] = params[:until_time].nil? || params[:until_time].empty? ? '2017/02/01' : params[:until_time]
     @since_time = session[:since_time]
     @until_time = session[:until_time]
     @range_indexes = []
@@ -67,6 +67,7 @@ class SinatraOmniAuth < Sinatra::Base
   end
 
   get '/reload' do
+    redirect '/' if session[:access_token].nil?
     require_relative 'history.rb'
     @title = 'Tadoryo9'
     @since_time = session[:since_time]
@@ -79,8 +80,6 @@ class SinatraOmniAuth < Sinatra::Base
     end
     erb :index
   end
-
-
 
   error do
     'Sorry there was a nasty error - ' + env['sinatra.error'].message
