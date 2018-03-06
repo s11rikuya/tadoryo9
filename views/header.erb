@@ -1,23 +1,23 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <a class="navbar-brand" href="/"><%= @title %></a>
+  <% if session[:access_token] %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <% if session[:access_token] %>
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item text-white">
-      【<%= @since_time %>】  - 【<%= @until_time %>】
-    </li>
-  </ul>
-  <div class="mt-2 mt-md-0">
-    <form action="/index" method="get" class="form-inline">
-      <input class="form-control mr-sm-2" type="text" name="since_time" placeholder="XXXX/XX/XX">
-      <input class="form-control mr-sm-2" type="text" name="until_time" placeholder="XXXX/XX/XX">
-      <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
-      <a class="btn btn-outline-success my-2 my-sm-0" href="/reload">Reload</a>
-    </form>
+        【<%= @since_time %>】  - 【<%= @until_time %>】
+      </li>
+    </ul>
+    <div class="mt-2 mt-md-0">
+      <form action="/index" method="get" class="form-inline">
+        <input class="form-control mr-sm-2" type="text" name="since_time" placeholder="XXXX/XX/XX">
+        <input class="form-control mr-sm-2" type="text" name="until_time" placeholder="XXXX/XX/XX">
+        <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
+        <a class="btn btn-outline-success my-2 my-sm-0" href="/reload">Reload</a>
+      </form>
+    </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
 </nav>

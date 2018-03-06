@@ -32,7 +32,7 @@ input, button, textarea, select {
 
 .top {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .top h1 {
@@ -42,7 +42,7 @@ input, button, textarea, select {
 .top img {
   display: block;
   margin: 50px auto;
-  width: 30%;
+  width: 80%;
 }
 
 .login {
@@ -56,16 +56,30 @@ input, button, textarea, select {
   font-weight: bold;
 }
 
-.content {
-  display: flex;
-  height: 100%;
-}
-.info {
-  width: 50%;
-  overflow: scroll;
-}
+@media (min-width: 768px){
+  .top {
+    text-align: center;
+    margin-top: 10px;
+  }
 
-.frame {
-  width: 50%;
-  height: 100%;
+  .top h1 {
+    font-size: 50px;
+  }
+
+  .top img {
+    display: block;
+    margin: 50px auto;
+    width: 30%;
+  }
+
+  .login {
+    display: block;
+    width: 250px;
+    margin: auto;
+    border: solid black 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 50px;
+    font-weight: bold;
+  }
 }
