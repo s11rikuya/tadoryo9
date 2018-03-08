@@ -34,7 +34,7 @@ class SinatraOmniAuth < Sinatra::Base
 
   get '/auth/:provider/callback' do
     @provider = params[:provider]
-    @result = request.env['omniauth.auth']
+    pp @result = request.env['omniauth.auth']
     session[:access_token] = @result['credentials']['token']
     session[:user_id] = @result['extra']['raw_info']['id']
     redirect '/index'
