@@ -24,12 +24,11 @@ class SinatraOmniAuth < Sinatra::Base
   use OmniAuth::Builder do
     provider :facebook, APP_ID, APP_SECRET,
     scope: "email, user_birthday, public_profile, user_posts", display: "popup",
-    info_fields: "email, birthday, gender, first_name, last_name, posts"
+    info_fields: "id, name, email, birthday, gender, first_name, last_name, posts"
   end
 
   get '/' do
     @title = 'Tadoryo9'
-    session[:access_token] = nil
     erb :top
   end
 
@@ -37,6 +36,7 @@ class SinatraOmniAuth < Sinatra::Base
     @provider = params[:provider]
     @result = request.env['omniauth.auth']
     session[:access_token] = @result['credentials']['token']
+    session[:user_id] = @result['extra']['raw_info']['id']
     redirect '/index'
   end
 
@@ -48,6 +48,7 @@ class SinatraOmniAuth < Sinatra::Base
     session[:until_time] = params[:until_time].nil? || params[:until_time].empty? ? '2017/02/01' : params[:until_time]
     @since_time = session[:since_time]
     @until_time = session[:until_time]
+    @user_id = session[:user_id]
     @range_indexes = []
     @sum_distance = 0
     EM::defer do
@@ -55,10 +56,10 @@ class SinatraOmniAuth < Sinatra::Base
       my_history = History.new(session[:access_token])
       pp @range_indexes = my_history.gets_data(@since_time, @until_time)
       pp @sum_distance = @range_indexes.empty? ? 0 : my_history.calculation(@range_indexes)
-      File.open("data.json","w") do |json|
+      File.open("#{@user_id}.json","w") do |json|
         json.puts(JSON.generate(@range_indexes))
       end
-      File.open("sum_distance.txt", "w") do |file|
+      File.open("#{@user_id}.txt", "w") do |file|
         file.print(@sum_distance)
       end
       p 'operation finished!'
@@ -72,10 +73,11 @@ class SinatraOmniAuth < Sinatra::Base
     @title = 'Tadoryo9'
     @since_time = session[:since_time]
     @until_time = session[:until_time]
-    File.open('data.json') do |json|
+    @user_id = session[:user_id]
+    File.open("#{@user_id}.json") do |json|
       pp @range_indexes = JSON.load(json)
     end
-    File.open("sum_distance.txt") do |file|
+    File.open("#{@user_id}.txt") do |file|
       @sum_distance = file.read
     end
     erb :index
