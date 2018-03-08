@@ -1,5 +1,4 @@
 module GetFBData
-  require 'koala'
   require 'pp'
   def gets_data(since_time, until_time)
     @since_time = Time.parse(since_time)

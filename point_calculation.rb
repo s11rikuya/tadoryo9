@@ -21,7 +21,7 @@ module PointCalculation
   def calculation(range_indexes)
     distanes = []
     range_indexes.each_cons(2) do |a, b|
-      p c = distance(a["lat"], a["lng"], b["lat"], b["lng"])
+      c = distance(a["lat"], a["lng"], b["lat"], b["lng"])
       c = c.to_i
       distanes.push(c)
     end

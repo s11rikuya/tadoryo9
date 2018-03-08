@@ -1,14 +1,10 @@
-require 'sinatra'
 require 'sinatra/reloader'
-require 'omniauth-facebook'
 require 'net/http'
 require 'json'
 require 'time'
-require 'dotenv'
 require 'pp'
-require 'eventmachine'
-require 'thin'
-
+require 'bundler'
+Bundler.require
 enable :sessions
 Dotenv.load
 
@@ -28,7 +24,6 @@ class SinatraOmniAuth < Sinatra::Base
   end
 
   get '/' do
-    @title = 'Tadoryo9'
     erb :top
   end
 
@@ -43,7 +38,6 @@ class SinatraOmniAuth < Sinatra::Base
   get '/index' do
     redirect '/' if session[:access_token].nil?
     require_relative 'history.rb'
-    @title = 'Tadoryo9'
     session[:since_time] = params[:since_time].nil? || params[:since_time].empty? ? '2017/01/01' : params[:since_time]
     session[:until_time] = params[:until_time].nil? || params[:until_time].empty? ? '2017/02/01' : params[:until_time]
     @since_time = session[:since_time]
@@ -70,7 +64,6 @@ class SinatraOmniAuth < Sinatra::Base
   get '/reload' do
     redirect '/' if session[:access_token].nil?
     require_relative 'history.rb'
-    @title = 'Tadoryo9'
     @since_time = session[:since_time]
     @until_time = session[:until_time]
     @user_id = session[:user_id]
