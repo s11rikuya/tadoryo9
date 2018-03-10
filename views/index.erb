@@ -1,4 +1,4 @@
-<div style="height: calc(100% - 72px);">
+<div style="height: calc(100% - 70px);">
 <section class="main-section">
 <% if File.file?("#{@user_id}.json") && File.file?("#{@user_id}.txt") %>
 <div style="margin-bottom: 0px; text-align: center;" class="alert alert-success" role="alert">
@@ -27,7 +27,7 @@
   </main>
 </div>
 </div>
-<div class="d-sm-none">
+<div class="d-md-none">
   <div class="bg-dark py-1 d-block" style="height: 56px;">
     <%= erb :carousel %>
   </div>
