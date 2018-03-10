@@ -1,6 +1,19 @@
-<div class="container-fluid" style="height: calc(100% - 74px);">
+<% if !File.file?("#{@user_id}.json") && !File.file?("#{@user_id}.txt") %>
+<div style="margin-bottom: 0px; text-align: center;" class="alert alert-warning" role="alert">
+  データ解析中
+</div>
+<% elsif @range_indexes.empty? %>
+<div style="margin-bottom: 0px; text-align: center;" class="alert alert-danger" role="alert">
+  該当なし
+</div>
+<% else %>
+<div style="margin-bottom: 0px; text-align: center;" class="alert alert-success" role="alert">
+  データ解析完了
+</div>
+<% end %>
+<div class="container-fluid" style="height: calc(100% - 124px);">
   <div class="row" style="height: 100%;">
-    <nav style="overflow: scroll;" class="col-md-2 d-none d-md-block bg-light sidebar pt-3">
+    <nav style="overflow: scroll;" class="col-md-3 d-none d-md-block bg-light sidebar pt-3">
       <div class="sidebar-sticky">
         <% if @range_indexes %>
         <h5>Check-in: <%= @range_indexes.size %></h5>
@@ -14,9 +27,10 @@
       </div>
     </nav>
 
-    <main role="main" style="height: 100%; padding: 0px;" class="main col-md-9 col-lg-10">
+    <main role="main" style="height: 100%; padding: 0px;" class="main col-md-9">
       <div id="map"></div>
     </main>
   </div>
 </div>
+<%= erb :carousel %>
 <%= erb :js %>

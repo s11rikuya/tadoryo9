@@ -38,6 +38,30 @@ html, body {
   font-weight: bold;
 }
 
+.hukidasi {
+  margin: 25px auto;
+  padding: 10px;
+  background-image: none;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: justify;
+}
+
+.hukidasi h1 {
+  margin: 20px 0px;
+}
+
+.person {
+  display: block;
+  margin: 25px auto;
+  width: 200px;
+}
+
+.sp-none {
+  display: none;
+}
+
 @media (min-width: 768px){
   .top {
     text-align: center;
@@ -63,5 +87,23 @@ html, body {
     color: black;
     font-size: 50px;
     font-weight: bold;
+  }
+
+  .hukidasi {
+    margin: 50px auto;
+    padding: 20px 100px 100px;
+    background-image: url(hukidasi.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+  }
+
+  .hukidasi h1 {
+    margin: 20px;
+  }
+
+  .sp-none {
+    display: inline;
   }
 }

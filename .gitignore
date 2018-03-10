@@ -1,8 +1,8 @@
 *.gem
 *.rbc
+*.json
+*.txt
 /.DS_Store
-/.json
-/.txt
 /.config
 /coverage/
 /InstalledFiles

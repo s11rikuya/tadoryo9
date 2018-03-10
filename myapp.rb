@@ -23,7 +23,14 @@ class SinatraOmniAuth < Sinatra::Base
     info_fields: "id, name, email, birthday, gender, first_name, last_name, posts"
   end
 
+  helpers do
+    def get_alphabet(n)
+      ('A'[0].ord + n).chr
+    end
+  end
+
   get '/' do
+    session[:access_token] = nil
     erb :top
   end
 
@@ -45,6 +52,10 @@ class SinatraOmniAuth < Sinatra::Base
     @user_id = session[:user_id]
     @range_indexes = []
     @sum_distance = 0
+    if File.file?("#{@user_id}.json") && File.file?("#{@user_id}.txt")
+      File.delete("#{@user_id}.json")
+      File.delete("#{@user_id}.txt")
+    end
     EM::defer do
       p 'operation started!'
       my_history = History.new(session[:access_token])
@@ -67,13 +78,19 @@ class SinatraOmniAuth < Sinatra::Base
     @since_time = session[:since_time]
     @until_time = session[:until_time]
     @user_id = session[:user_id]
-    File.open("#{@user_id}.json") do |json|
-      pp @range_indexes = JSON.load(json)
-    end
-    File.open("#{@user_id}.txt") do |file|
-      @sum_distance = file.read
+    if File.file?("#{@user_id}.json") && File.file?("#{@user_id}.txt")
+      File.open("#{@user_id}.json") do |json|
+        pp @range_indexes = JSON.load(json)
+      end
+      File.open("#{@user_id}.txt") do |file|
+        @sum_distance = file.read
+      end
     end
     erb :index
+  end
+
+  get '/about' do
+    erb :about
   end
 
   error do
