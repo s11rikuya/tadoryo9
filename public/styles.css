@@ -38,24 +38,14 @@ html, body {
   font-weight: bold;
 }
 
-.hukidasi {
-  margin: 25px auto;
-  padding: 10px;
-  background-image: none;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  text-align: justify;
+.about-section {
+  width: 85%;
+  margin: 50px auto;
 }
 
-.hukidasi h1 {
-  margin: 20px 0px;
-}
+.main-section {
+  height: calc(100% - 56px);
 
-.person {
-  display: block;
-  margin: 25px auto;
-  width: 200px;
 }
 
 .sp-none {
@@ -63,6 +53,10 @@ html, body {
 }
 
 @media (min-width: 768px){
+  .main-section {
+    height: 100%;
+  }
+
   .top {
     text-align: center;
     margin-top: 50px;
@@ -87,20 +81,6 @@ html, body {
     color: black;
     font-size: 50px;
     font-weight: bold;
-  }
-
-  .hukidasi {
-    margin: 50px auto;
-    padding: 20px 100px 100px;
-    background-image: url(hukidasi.png);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    text-align: center;
-  }
-
-  .hukidasi h1 {
-    margin: 20px;
   }
 
   .sp-none {
