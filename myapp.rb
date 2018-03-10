@@ -78,6 +78,7 @@ class SinatraOmniAuth < Sinatra::Base
     @since_time = session[:since_time]
     @until_time = session[:until_time]
     @user_id = session[:user_id]
+    @range_indexes = []
     if File.file?("#{@user_id}.json") && File.file?("#{@user_id}.txt")
       File.open("#{@user_id}.json") do |json|
         pp @range_indexes = JSON.load(json)
