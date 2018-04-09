@@ -1,6 +1,7 @@
 *.gem
 *.rbc
-.DS_Store
+myapp.db
+/.DS_Store
 /.config
 /coverage/
 /InstalledFiles
