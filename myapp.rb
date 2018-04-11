@@ -104,6 +104,18 @@ class SinatraOmniAuth < Sinatra::Base
     erb :privacypolicy
   end
 
+  get '/admin' do
+    @users = User.all
+    @user_count = User.count
+
+    erb :admin
+  end
+
+  get '/admin/:id' do
+    @user = User.find_by(id: params[:id])
+    erb :users
+  end
+
   error do
     'Sorry there was a nasty error - ' + env['sinatra.error'].message
   end
