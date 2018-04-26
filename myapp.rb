@@ -41,11 +41,15 @@ class SinatraOmniAuth < Sinatra::Base
   get '/auth/:provider/callback' do
     @provider = params[:provider]
     pp @result = request.env['omniauth.auth']
-    @user = User.create(
-      access_token: @result['credentials']['token'],
-      name: @result['extra']['raw_info']['name'],
-      fb_id: @result['extra']['raw_info']['id']
-    )
+    if User.find_by(fb_id: @result['extra']['raw_info']['id'])
+      @user = User.find_by(fb_id: @result['extra']['raw_info']['id'])
+    else
+      @user = User.create(
+        access_token: @result['credentials']['token'],
+        name: @result['extra']['raw_info']['name'],
+        fb_id: @result['extra']['raw_info']['id']
+      )
+    end
     session[:access_token] = @user.access_token
     session[:user_id] = @user.id
     session[:name] = @user.name
@@ -107,7 +111,6 @@ class SinatraOmniAuth < Sinatra::Base
   get '/admin' do
     @users = User.all
     @user_count = User.count
-
     erb :admin
   end
 
