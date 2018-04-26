@@ -63,6 +63,7 @@ class SinatraOmniAuth < Sinatra::Base
     pp @sum_distance = $sum_distance.nil? ? 0 : $sum_distance
     puts "sum_distance:#{@sum_distance}"
     @user_id = session[:user_id]
+    @user = User.find_by(access_token: session[:access_token])
     @checkins = []
     if Checkin.where(user_id: @user_id)
       pp @checkins = Checkin.where(user_id: @user_id)

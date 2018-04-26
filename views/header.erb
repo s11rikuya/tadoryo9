@@ -17,7 +17,10 @@
           <input class="form-control" type="date" name="until_time">
         </div>
         <button class="btn btn-outline-success m-2" type="submit">Search</button>
-        <a class="btn btn-outline-success" href="/index">Reload</a>
+        <a class="btn btn-outline-success m-2" href="/index">Reload</a>
+        <% if @user.admin == 1 %>
+        <a class="btn btn-outline-success m-2" href="/admin">Admin</a>
+        <% end %>
       </form>
     </div>
   </div>

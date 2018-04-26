@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :access_token
       t.string :fb_id
       t.string :name
+      t.integer :admin
       t.timestamps
     end
   end

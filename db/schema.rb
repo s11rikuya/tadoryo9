@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20180313061546) do
     t.string "access_token"
     t.string "fb_id"
     t.string "name"
+    t.integer "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
