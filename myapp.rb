@@ -111,12 +111,16 @@ class SinatraOmniAuth < Sinatra::Base
 
   get '/admin' do
     @users = User.all
+    @user = User.find_by(access_token: session[:access_token])
     @user_count = User.count
     erb :admin
   end
 
   get '/admin/:id' do
+    @users = User.all
+    @user_count = User.count
     @user = User.find_by(id: params[:id])
+    @checkins = Checkin.where(user_id: @user.id)
     erb :users
   end
 
