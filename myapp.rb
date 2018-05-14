@@ -111,9 +111,9 @@ class SinatraOmniAuth < Sinatra::Base
 
   get '/admin' do
     @users = User.all
-    @user = User.find_by(access_token: session[:access_token])
     @user_count = User.count
-    redirect '/' if @user.admin == 1
+    @user = User.find_by(access_token: session[:access_token])
+    redirect '/' unless @user.admin == 1
     erb :admin
   end
 
@@ -122,7 +122,7 @@ class SinatraOmniAuth < Sinatra::Base
     @user_count = User.count
     @user = User.find_by(id: params[:id])
     @checkins = Checkin.where(user_id: @user.id)
-    redirect '/' if @user.admin == 1
+    redirect '/' unless @user.admin == 1
     erb :users
   end
 
